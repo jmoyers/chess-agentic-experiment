@@ -16,8 +16,8 @@ The goal isn't to replace grandmaster instruction—it's to explore whether an A
 
 ### Key observations
 
-- **Recent reasoning models have crossed a threshold.** A year ago, LLMs couldn't beat random moves. Now models like Gemini 3 Pro exceed the average chess.com player (~1600 ELO).
-- **Tool access matters more than raw chess ability.** The agent doesn't need to calculate—it can query Stockfish. It needs to *explain* with access to statistics and examples.
+- **Recent reasoning models have crossed a threshold.** A year ago, LLMs couldn't beat random moves. Now models like Gemini 3 Pro exceed the average chess.com player (~650 ELO).
+- **Tool access matters more than raw chess ability.** The agent doesn't need to calculate—it can query Stockfish. It needs to _explain_ with access to statistics and examples.
 - **Real-time shared state is essential for agentic UIs.** The agent manipulates the board, draws arrows, highlights squares. Socket.IO provides the transport for this canvas collaboration.
 
 ## Features
@@ -136,4 +136,3 @@ shared/           # TypeScript types for client/server
 ## License
 
 MIT
-
