@@ -129,7 +129,7 @@ shared/           # TypeScript types for client/server
 
 ## Acknowledgments
 
-- [Maxim Saplin's chess LLM research](https://github.com/niclas-timm/llm-chess-experiments) for ELO benchmarking methodology
+- [Maxim Saplin's LLM Chess Leaderboard](https://maxim-saplin.github.io/llm_chess/) for ELO benchmarking methodology
 - [Lichess](https://lichess.org) for their open API and game databases
 - [chess.js](https://github.com/jhlywa/chess.js) for move validation
 
