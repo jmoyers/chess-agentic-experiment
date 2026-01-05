@@ -131,34 +131,35 @@ shared/           # TypeScript types for client/server
 
 ### Chess Engine
 
-| Project | License | Description |
-|---------|---------|-------------|
+| Project                                  | License   | Description                                                                                                                                  |
+| ---------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Stockfish](https://stockfishchess.org/) | **GPLv3** | Open-source chess engine. This project communicates with Stockfish via UCI protocol but does not modify or distribute Stockfish source code. |
 
 ### Libraries
 
-| Project | License | Description |
-|---------|---------|-------------|
-| [chess.js](https://github.com/jhlywa/chess.js) | **BSD-2-Clause** | JavaScript chess library for move validation, FEN/PGN parsing |
-| [LMDB](https://github.com/LMDB/lmdb-js) | **OpenLDAP Public License** | Lightning Memory-Mapped Database for local position indexing |
+| Project                                        | License                     | Description                                                   |
+| ---------------------------------------------- | --------------------------- | ------------------------------------------------------------- |
+| [chess.js](https://github.com/jhlywa/chess.js) | **BSD-2-Clause**            | JavaScript chess library for move validation, FEN/PGN parsing |
+| [LMDB](https://github.com/LMDB/lmdb-js)        | **OpenLDAP Public License** | Lightning Memory-Mapped Database for local position indexing  |
 
 ### Data Sources
 
-| Source | License | Description |
-|--------|---------|-------------|
-| [Lichess Game Database](https://database.lichess.org/) | **CC0 1.0 (Public Domain)** | Monthly exports of all rated games played on Lichess |
-| [Lichess Opening Explorer API](https://lichess.org/api#tag/Opening-Explorer) | **AGPL-3.0** (API code) | REST API for querying opening statistics from Masters and Lichess databases |
-| [Lichess Opening Names](https://github.com/lichess-org/chess-openings) | **Public Domain** | ECO codes and opening name mappings |
+| Source                                                                       | License                     | Description                                                                 |
+| ---------------------------------------------------------------------------- | --------------------------- | --------------------------------------------------------------------------- |
+| [Lichess Game Database](https://database.lichess.org/)                       | **CC0 1.0 (Public Domain)** | Monthly exports of all rated games played on Lichess                        |
+| [Lichess Opening Explorer API](https://lichess.org/api#tag/Opening-Explorer) | **AGPL-3.0** (API code)     | REST API for querying opening statistics from Masters and Lichess databases |
+| [Lichess Opening Names](https://github.com/lichess-org/chess-openings)       | **Public Domain**           | ECO codes and opening name mappings                                         |
 
 ### Research & Benchmarks
 
-| Project | Notes |
-|---------|-------|
+| Project                                                                           | Notes                                                              |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | [Maxim Saplin's LLM Chess Leaderboard](https://maxim-saplin.github.io/llm_chess/) | ELO benchmarking methodology for evaluating LLM chess capabilities |
 
 ### AI Provider APIs
 
 This project uses official API clients for AI providers. Usage is governed by each provider's Terms of Service:
+
 - [Anthropic API Terms](https://www.anthropic.com/legal/consumer-terms)
 - [OpenAI API Terms](https://openai.com/policies/terms-of-use)
 - [Google AI Terms](https://ai.google.dev/gemini-api/terms)
@@ -169,4 +170,4 @@ MIT
 
 ---
 
-*Note: Lichess game data is released under CC0, meaning no attribution is required, but we gratefully acknowledge their contribution to open chess data. Stockfish is GPLv3, but this project only communicates with it as an external binary via UCI protocol and does not link against or distribute Stockfish code.*
+_Note: Lichess game data is released under CC0, meaning no attribution is required, but we gratefully acknowledge their contribution to open chess data. Stockfish is GPLv3, but this project only communicates with it as an external binary via UCI protocol and does not link against or distribute Stockfish code._
