@@ -1,0 +1,15 @@
+.chess-piece {
+  width: 120px;
+  height: 120px;
+  transition: transform var(--transition-fast);
+  pointer-events: none;
+}
+
+.piece-wrapper:hover .chess-piece {
+  transform: scale(1.03);
+}
+
+.piece-wrapper.dragging .chess-piece {
+  transform: scale(1.08);
+}
+

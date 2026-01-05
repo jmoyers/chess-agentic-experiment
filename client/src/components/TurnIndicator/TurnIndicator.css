@@ -1,0 +1,111 @@
+/* Fixed height container to prevent layout shifts */
+.turn-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  height: 32px;
+  min-width: 180px;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+/* Subtle status changes via color only */
+.turn-indicator.check {
+  color: var(--accent-warning);
+}
+
+.turn-indicator.checkmate {
+  color: var(--accent-red);
+}
+
+.turn-indicator.draw {
+  color: var(--text-muted);
+}
+
+.turn-piece {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.turn-piece.white {
+  background: var(--board-light);
+}
+
+.turn-piece.black {
+  background: var(--board-dark);
+}
+
+.turn-text {
+  white-space: nowrap;
+}
+
+/* Animation state - stays inline */
+.turn-indicator.animating {
+  color: var(--accent-gold);
+}
+
+.animation-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.animation-label {
+  color: inherit;
+  white-space: nowrap;
+}
+
+.animation-counter {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 3px;
+  min-width: 60px;
+  max-width: 120px;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-gold);
+  border-radius: 2px;
+  transition: width 0.15s ease;
+}
+
+/* Virtual mode - stays inline */
+.turn-indicator.virtual {
+  color: var(--accent-warning);
+}
+
+.virtual-badge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-warning);
+  opacity: 0.8;
+}
+
+.virtual-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+

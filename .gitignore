@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+*.swp
+*.swo
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+agent-logs/
+
+# Testing
+coverage/
+test-results/
+**/test-results/
+**/playwright-report/
+playwright/.cache/
+blob-report/
+.playwright-mcp/
+
+# Stockfish binary and build
+server/bin/
+server/.stockfish-build/
+
+# Misc
+*.tsbuildinfo
+
+# Local explorer database
+server/data/
+

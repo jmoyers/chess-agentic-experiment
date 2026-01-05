@@ -1,0 +1,163 @@
+# Chess Opening Study - Development Rules
+
+## Testing Philosophy
+
+### Playwright E2E Tests Are Critical
+- **Always verify with Playwright tests** that exercise real user interactions
+- Tests must verify things are **displaying correctly AND interacting correctly**
+- Run tests before considering any feature complete
+- Use `--reporter=list` for readable output during development
+
+### Test Multiple Scenarios
+- **Exercise edge cases**: The agent streaming bug wasn't found until testing 2 separate chat conversations
+- Test the **second action**, not just the first (e.g., making a second move, creating a second conversation)
+- Test state persistence across UI changes (drawer open/close, navigation)
+- Test browser back/forward navigation behavior
+
+### Test Location and Structure
+- E2E tests live in `client/e2e/`
+- Run with: `cd client && npx playwright test <test-file>.spec.ts`
+- Use `page.waitForTimeout()` between rapid interactions (200-500ms)
+- Always wait for "Connected" status before interacting with the board/chat
+
+## Common Bugs to Watch For
+
+### Feedback Loops (URL State)
+- **Symptom**: Browser freezes, infinite state updates, rapid oscillation
+- **Cause**: Bidirectional sync between URL and app state without guards
+- **Fix**: Use refs to track sync direction (`isNavigatingFromUrl`, `lastPushedValue`)
+- **Test**: Navigate using both UI and keyboard, check URL updates don't cause loops
+
+### Socket Connection Race Conditions
+- **Symptom**: Actions fail silently, state doesn't load from URL
+- **Cause**: Zustand `isConnected` state updates before `socket.connected` is true
+- **Fix**: Use `setTimeout(() => {})` wrapper or `socket.once('connect')` fallback
+- **Test**: Direct URL navigation (e.g., `/opening/italian-game`)
+
+### Duplicate Messages in Conversations
+- **Symptom**: Same message appears twice
+- **Cause**: React strict mode double-renders, missing deduplication
+- **Fix**: Use `first()` in Playwright selectors when duplicates expected
+- **Test**: Multiple message sends, drawer toggle cycles
+
+### Click-to-Move on Board
+- **Symptom**: Clicking pieces doesn't select them
+- **Cause**: dnd-kit drag handlers intercept clicks, `handleDragEnd` clears selection
+- **Fix**: Keep piece selected after click (don't clear in `handleDragEnd` when no `over` target)
+
+## State Management Patterns
+
+### URL State Store (`urlStore.ts`)
+```typescript
+// Pattern: Guard against feedback loops
+const isNavigatingFromUrl = useRef(false);
+const lastPushedValue = useRef<T | null>(null);
+
+// Sync FROM URL (only when URL initiated change)
+useEffect(() => {
+  if (urlValue !== null && urlValue !== lastPushedValue.current) {
+    isNavigatingFromUrl.current = true;
+    doNavigation(urlValue);
+    setTimeout(() => { isNavigatingFromUrl.current = false; }, 100);
+  }
+}, [urlValue]);
+
+// Sync TO URL (skip if change came from URL)
+useEffect(() => {
+  if (isNavigatingFromUrl.current) return;
+  if (appValue !== lastPushedValue.current) {
+    lastPushedValue.current = appValue;
+    setUrlValue(appValue);
+  }
+}, [appValue]);
+```
+
+### Zustand Store Subscriptions
+- Use `subscribeWithSelector` middleware for selective re-renders
+- Store UI state (drawer width, open state) in localStorage for persistence
+- Keep route-related state in URL for deep linking
+
+## Code Style
+
+### Zero Lint Policy
+- All lint errors must be fixed, not suppressed
+- Exceptions are rare and must be justified
+
+### UI/UX Preferences
+- Status messages: commercial, consumer-facing language (not technical)
+- Look and feel: communicative but subtle
+- Chess pieces: larger (60px), no shadows, thick outlines (2.5px stroke)
+
+### Build & Test Requirements
+- Build must be successful before proceeding
+- All unit tests must pass: `uv run python ...` for Python, `npm test` for JS
+- Playwright tests must pass for affected functionality
+
+## Playwright Test Patterns
+
+### Basic Test Structure
+```typescript
+test.beforeEach(async ({ page }) => {
+  await page.goto('/');
+  await page.getByText('Connected').waitFor({ state: 'visible', timeout: 10000 });
+});
+
+test('should do something', async ({ page }) => {
+  // Interact
+  await page.locator('[data-square="e2"]').click();
+  await page.waitForTimeout(200); // Let state settle
+  await page.locator('[data-square="e4"]').click();
+  
+  // Assert
+  await expect(page.locator('.move-tree-container')).toContainText('e4', { timeout: 5000 });
+});
+```
+
+### Debugging Failed Tests
+1. Check selector exists: `.move-tree-content` vs `.move-tree-container`
+2. Add `page.on('console', msg => console.log('BROWSER:', msg.text()))` for debugging
+3. Use `--reporter=list` to see test progress
+4. Check test video in `test-results/` folder
+
+### Handling Duplicate Elements
+```typescript
+// Use .first() when React strict mode may cause duplicates
+await expect(page.getByText('Some message').first()).toBeVisible();
+```
+
+## File Organization
+
+```
+client/
+├── e2e/                    # Playwright E2E tests
+│   ├── url-routing.spec.ts # URL state tests
+│   ├── conversation.spec.ts # Chat functionality
+│   └── board-interactions.spec.ts # Board UI tests
+├── src/
+│   ├── stores/             # Zustand stores
+│   │   ├── urlStore.ts     # URL state management
+│   │   ├── boardStore.ts   # Chess board state
+│   │   └── conversationStore.ts # Chat state
+│   └── components/         # React components
+server/
+├── src/
+│   └── agent/              # AI agent logic
+└── tests/                  # Server unit tests
+```
+
+## Running Tests
+
+```bash
+# Run all Playwright tests
+cd client && npx playwright test
+
+# Run specific test file
+cd client && npx playwright test url-routing.spec.ts
+
+# Run with visible browser
+cd client && npx playwright test --headed
+
+# Run specific test by name
+cd client && npx playwright test -g "should handle /opening/:id"
+```
+

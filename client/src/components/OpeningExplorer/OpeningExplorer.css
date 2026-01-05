@@ -1,0 +1,344 @@
+.opening-explorer {
+  background: var(--surface-elevated);
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Source toggle */
+.explorer-source-toggle {
+  display: flex;
+  gap: 2px;
+  padding: 6px;
+  background: var(--surface-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.source-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.source-btn:hover:not(.disabled) {
+  background: var(--surface-hover);
+  color: var(--text-secondary);
+}
+
+.source-btn.active {
+  background: var(--surface-base);
+  border-color: var(--accent-primary-alpha);
+  color: var(--text-primary);
+}
+
+.source-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.source-icon {
+  font-size: 12px;
+}
+
+.source-label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.source-unavailable {
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+
+/* Single panel mode for local */
+.explorer-panels.single {
+  background: var(--surface-base);
+}
+
+.explorer-panels.single .database-panel {
+  flex: 1;
+}
+
+/* Opening name header */
+.explorer-opening {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--surface-subtle);
+  flex-shrink: 0;
+}
+
+.explorer-opening .eco {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 5px;
+  background: var(--accent-primary-alpha);
+  color: var(--accent-primary);
+  border-radius: 4px;
+}
+
+.explorer-opening .name {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Side by side panels container */
+.explorer-panels {
+  display: flex;
+  gap: 1px;
+  background: var(--border-subtle);
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Individual database panel */
+.database-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-base);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.database-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: var(--surface-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.database-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+
+.database-total {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+
+.database-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Moves list */
+.explorer-moves {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.explorer-move-row {
+  display: grid;
+  grid-template-columns: 36px 50px 1fr;
+  gap: 6px;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.explorer-move-row:hover {
+  background: var(--surface-hover);
+}
+
+.explorer-move-row:last-child {
+  border-bottom: none;
+}
+
+/* Move cells */
+.move-cell {
+  display: flex;
+  align-items: center;
+}
+
+.move-san {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.move-games {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.games-pct {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.games-count {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-tertiary);
+}
+
+.move-bar {
+  flex: 1;
+}
+
+/* Result bar */
+.result-bar {
+  display: flex;
+  width: 100%;
+  height: 12px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--surface-base);
+}
+
+.bar-segment {
+  height: 100%;
+  transition: width 0.2s ease;
+}
+
+.bar-segment.white {
+  background: #e8e4dc;
+}
+
+.bar-segment.draw {
+  background: #6a665e;
+}
+
+.bar-segment.black {
+  background: #2a2a32;
+}
+
+/* Summary row */
+.explorer-summary {
+  padding: 6px 8px;
+  border-top: 1px solid var(--accent-primary-alpha);
+  background: var(--surface-subtle);
+  flex-shrink: 0;
+}
+
+.summary-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.summary-bar .result-bar {
+  height: 14px;
+}
+
+.summary-percents {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.summary-percents .pct.white {
+  color: #e8e4dc;
+}
+
+.summary-percents .pct.draw {
+  color: var(--text-tertiary);
+}
+
+.summary-percents .pct.black {
+  color: var(--text-secondary);
+}
+
+/* Loading state */
+.explorer-loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-subtle);
+  border-top-color: var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error state */
+.explorer-error {
+  padding: 12px 8px;
+  font-size: 11px;
+  color: var(--accent-red);
+  text-align: center;
+}
+
+/* Empty state */
+.explorer-empty {
+  padding: 24px 8px;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+/* Scrollbar */
+.database-content::-webkit-scrollbar,
+.explorer-moves::-webkit-scrollbar {
+  width: 4px;
+}
+
+.database-content::-webkit-scrollbar-track,
+.explorer-moves::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.database-content::-webkit-scrollbar-thumb,
+.explorer-moves::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 2px;
+}
+
+.database-content::-webkit-scrollbar-thumb:hover,
+.explorer-moves::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
