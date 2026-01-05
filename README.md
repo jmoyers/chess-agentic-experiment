@@ -12,7 +12,7 @@ An experimental agentic application exploring frontier model capabilities at the
 
 This project builds an agent harness with access to the same tools a chess player uses when studying: **Stockfish** for deep analysis, the **Masters database** (2.7M over-the-board games), **Lichess API** (80M online games), and a **local explorer** with indexed games for instant queries.
 
-The goal isn't to replace grandmaster instruction—it's to explore whether an AI with proper tooling can fill the gap between high-level teaching content and a learner who needs 20 more questions answered to truly understand a position.
+The goal isn't to replace grandmaster instruction - it's to explore whether an AI with proper tooling can fill the gap between high-level teaching content and a learner who needs 20 more questions answered to truly understand a position.
 
 ### Key observations
 
