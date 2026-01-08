@@ -326,3 +326,4 @@ if (process.argv[1]?.includes('download')) {
   main();
 }
 
+

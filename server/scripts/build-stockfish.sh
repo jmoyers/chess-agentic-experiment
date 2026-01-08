@@ -85,3 +85,4 @@ echo ""
 echo "Stockfish is ready to use!"
 echo "Set STOCKFISH_PATH=$BIN_DIR/stockfish in your environment, or it will auto-detect."
 
+

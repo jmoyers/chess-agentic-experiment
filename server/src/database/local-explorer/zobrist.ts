@@ -374,3 +374,4 @@ export const AFTER_D4_HASH = hashFen(
   'rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq d3 0 1'
 );
 
+

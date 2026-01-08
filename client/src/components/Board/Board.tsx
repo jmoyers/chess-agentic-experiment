@@ -434,7 +434,7 @@ export function Board() {
 
   const renderSquare = (file: string, rank: number) => {
     const square = `${file}${rank}`;
-    const isLight = (FILES.indexOf(file) + rank) % 2 === 1;
+    const isLight = (FILES.indexOf(file) + rank) % 2 === 0;
     const piece = getPieceAt(square);
     const isSelected = selectedSquare === square;
     const isLegalMoveSquare = legalMoves.includes(square);

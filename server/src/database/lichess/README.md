@@ -147,3 +147,4 @@ The Lichess API has rate limits (~15 requests/minute per database). The library 
 
 The Lichess database is released under [CC0 (public domain)](https://database.lichess.org/).
 
+

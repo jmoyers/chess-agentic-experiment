@@ -37,3 +37,4 @@ export const useOpeningStore = create<OpeningState>((set) => ({
   clearSearch: () => set({ searchQuery: '', searchResults: [], isSearching: false }),
 }));
 
+

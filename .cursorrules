@@ -161,3 +161,4 @@ cd client && npx playwright test --headed
 cd client && npx playwright test -g "should handle /opening/:id"
 ```
 
+

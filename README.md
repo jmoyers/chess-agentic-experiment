@@ -2,9 +2,9 @@
 
 An experimental agentic application exploring frontier model capabilities at the intersection of chess and AI. Rather than playing chess, the agent helps you understand openings, themes, attacking plans, and positional concepts through an interactive coaching interface.
 
-[![Demo Video](https://cdn.loom.com/sessions/thumbnails/97f53213d8dd4292b18eb45a7f780783-4eb69ea8dd3ed54a-full-play.gif)](https://www.loom.com/share/97f53213d8dd4292b18eb45a7f780783)
+https://jmoyers.org/posts/chess-agentic-experiment/demo.mp4
 
-> **[Watch the full demo →](https://www.loom.com/share/97f53213d8dd4292b18eb45a7f780783)**
+> **[Read the full blog post →](https://jmoyers.org/posts/chess-agentic-experiment/)**
 
 ![Screenshot](docs/screenshot.png)
 

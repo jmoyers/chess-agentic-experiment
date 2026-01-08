@@ -93,3 +93,4 @@ function processGames(games: ParsedGame[], config: ProcessorConfig): WorkerResul
 export { processGames };
 export type { WorkerMessage, WorkerResult, WorkerError, ProcessorConfig };
 
+
